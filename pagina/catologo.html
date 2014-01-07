@@ -1,0 +1,300 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="SHORTCUT ICON" href="img/logo1.png" type="image/png">
+<title>Catalogo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="css/estile.css">
+<link rel="stylesheet" href="css/menu-effects.css" />
+<link rel='stylesheet' id='camera-css'  href='css/camera.css' type='text/css' media='all'> 
+
+	<script src="js/menu-effects.js"></script>
+    <script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="js/JQuery-Menu.js" type="text/javascript"></script>
+    <script type="text/javascript" src='scripts/jquery.min.js'></script>
+    <script type="text/javascript" src='scripts/jquery.mobile.customized.min.js'></script>
+    <script type="text/javascript" src='scripts/jquery.easing.1.3.js'></script> 
+    <script type="text/javascript" src='scripts/camera.min.js'></script> 
+
+<script>
+		jQuery(function(){
+			
+			jQuery('#camera_wrap_1').camera({
+				thumbnails: true
+			});
+
+			jQuery('#camera_wrap_2').camera({
+				height: '400px',
+				loader: 'bar',
+				pagination: false,
+				thumbnails: true
+			});
+		});
+	</script>
+    
+ <script>
+ 
+ $(document).ready(function(){
+	 
+	 $("#box1").mouseenter(function(){
+		 	$(this).css("background","url(img/cat2.png)");
+		 }).mouseleave(function(){
+			 $(this).css("background","url(img/cat.png)");
+		
+		});
+		
+		$("#box2").mouseenter(function(){
+		 	$(this).css("background","url(img/esc2.png)");
+		 }).mouseleave(function(){
+			 $(this).css("background","url(img/esc.png)");
+		
+		});
+		
+		$("#box3").mouseenter(function(){
+		 	$(this).css("background","url(img/qui2.png)");
+		 }).mouseleave(function(){
+			 $(this).css("background","url(img/qui.png)");
+		
+		});
+		
+		$("#box4").mouseenter(function(){
+		 	$(this).css("background","url(img/soc2.png)");
+		 }).mouseleave(function(){
+			 $(this).css("background","url(img/soc.png)");
+		
+		});
+	 
+	});
+	
+	function buscador(){ 
+
+			var xmlhttp=false; 
+				try {xmlhttp= new ActiveXObject("Msxal2.XMLHTTP");} 
+				catch(e) 
+				{
+					try 
+					{ 
+						xalhttp= new ActiveXObject("Microsoft.XMLHTTP");
+					} 
+					catch(e){ 
+						xalhttp=false;
+					}
+				} 
+				
+				if(!xmlhttp && typeof XMLHttpRequest!='undefined')
+				{
+					 xmlhttp= new XMLHttpRequest();
+				} 
+				
+				return xmlhttp; 
+
+	}
+ 
+ 
+ 	function buscar(id,este)
+	{
+				
+				
+				for(var i=1; i<19 ; i++) 
+				{
+					document.getElementById("l"+i).style.textDecoration="none";
+				}
+				
+				if(este==null){	document.getElementById("l"+id).style.textDecoration="underline"; }
+				else { $(este).css("text-decoration","underline"); }
+				
+				ajax = buscador();
+				ajax.open("GET","ajax.php?id="+id);
+				
+				c = document.getElementById("1");
+				document.getElementById("1").style.display = 'block';
+				
+				ajax.onreadystatechange= function()
+				{
+					if( ajax.readyState == 4)
+					{
+						c.innerHTML = ajax.responseText;	
+					}
+				}
+				
+				ajax.send(null);
+					
+	
+	}	
+ 
+ 	function getGET(){
+	   var loc = document.location.href;
+	   var getString = loc.split('?')[1];
+	   var GET = getString.split('&');
+	   var get = {};//this object will be filled with the key-value pairs and returned.
+	
+	   for(var i = 0, l = GET.length; i < l; i++){
+		  var tmp = GET[i].split('=');
+		  get[tmp[0]] = unescape(decodeURI(tmp[1]));
+	   }
+	   //return get;
+	   buscar(get,null);
+	}
+	
+	function locationVars ()
+	{
+			var vr='l'
+			var src = String( window.location.href ).split('?')[1];
+			var vrs = src.split('&');
+	 
+			for (var x = 0, c = vrs.length; x < c; x++) 
+			{
+				if (vrs[x].indexOf(vr) != -1)
+				{
+					buscar( decodeURI( vrs[x].split('=')[1] ),null);
+					break;
+				};
+			};
+	};
+ 
+ </script>
+
+    
+</head>
+
+<body onLoad="locationVars ()">
+
+	<div class="main">
+    	
+        <!-- CABECERA -->
+        <div class="head"><h1><a href="index.html">KIDS Estilo Fashion</a></h1>
+        				<div class="inicio"><a href="#">Inicio de Sesion</a></div>	
+        </div>
+        
+        <!-- ESPACIO -->
+    	<div class="h15"></div>
+         
+       <!-- MENU -->
+        <div id="main1" role="main">
+        	 <div class="opc">
+                <ul id="menu3" class="menu">
+                    <li id="Op1"tabindex="0" style="background-color:#389af5;"><a href="index.html">INICIO</a></li>
+                    
+                    <li tabindex="0" style="background-color:#fff200; color:#009933;" id="Op2"><a href="nosotros.html">NOSOTROS</a>
+                        <ul class="submenu zipper" id="op">
+                            <li style="background-color:#fff200" id="Op2"><a href="nosotros.html#mision">Misión</a></li>
+                            <li style="background-color:#fff200" id="Op2"><a href="nosotros.html#vision">Visión</a></li>
+                            <li style="background-color:#fff200" id="Op2"><a href="nosotros.html#quien">Quienes Somos</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li tabindex="0" style="background-color:#ff0101; cursor:default" id="Op3"><a href="#" id="selected">CATÁLOGO</a>
+                        <ul class="submenu zipper" id="2op">
+                            <li  style="background-color:#ff0101" id="Op3"><a href="catologo.html?l=1">Cuna Deportivo</a></li>
+                            <li style="background-color:#ff0101" id="Op3"><a href="catologo.html?l=2">Cuna Estampada</a></li>
+                            <li style="background-color:#ff0101" id="Op3"><a href="catologo.html?l=3">Cuna Niña</a></li>
+                            <li style="background-color:#ff0101" id="Op3"><a href="catologo.html?l=4">Deportivo</a></li>
+                            <li style="background-color:#ff0101" id="Op3"><a href="catologo.html?l=5">Mas...</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li tabindex="0" style="background-color:#009933; color:#fff200;" id="Op4"><a href="contactenos.html">CONTACTENOS</a></li>
+                </ul>
+            </div></div>
+        
+        <!-- ESPACIO -->
+        <div class="h10"></div>        
+        <!-- Migas de pan -->
+        <div class="migas"> <a href="index.html">INICIO</a> > <a href="#">CATALOGO</a> </div>        
+         <!-- ESPACIO -->
+        <div class="h10"></div>
+        
+        <div class="catalogocon">
+        	<div class="catalogomenu">
+                <p>Nuestros Productos</p>
+                    <ul>
+                        <li><a id="l1" href="#" onClick="buscar('1',this)">Cuna Deportivo</a></li>
+                        <li><a id="l2" href="#" onClick="buscar('2',this)">Cuna Estampada</a></li>
+                        <li><a id="l3" href="#" onClick="buscar('3',this)">Cuna Niña</a></li>
+                        <li><a id="l4" href="#" onClick="buscar('4',this)">Deportivo</a></li>
+                        <li><a id="l5" href="#" onClick="buscar('5',this)">Niño Casual</a></li>
+                        <li><a id="l6" href="#" onClick="buscar('6',this)">Sandalia Clásica</a></li>
+                        <li><a id="l7" href="#" onClick="buscar('7',this)">Sandalia Deportiva</a></li>
+                        <li><a id="l8" href="#" onClick="buscar('8',this)">Sandalia Niña Planta</a></li>
+                        <li><a id="l9" href="#" onClick="buscar('9',this)">Sandalia Tacón</a></li>
+                        <li><a id="l10" href="#" onClick="buscar('10',this)">Semi No Tuerce Deportivo</a></li>
+                        <li><a id="l11" href="#" onClick="buscar('11',this)">Semi No Tuerce Niña</a></li>
+                        <li><a id="l12" href="#" onClick="buscar('12',this)">Semi No Tuerce Niño</a></li>
+                        <li><a id="l13" href="#" onClick="buscar('13',this)">Sport Niño</a></li>
+                        <li><a id="l14" href="#" onClick="buscar('14',this)">Valeta Clásica</a></li>
+                        <li><a id="l15" href="#" onClick="buscar('15',this)">Valeta Estampada</a></li>
+                        <li><a id="l16" href="#" onClick="buscar('16',this)">Valeta Estampada Transfer</a></li>
+                        <li><a id="l17" href="#" onClick="buscar('17',this)">Varón Ceremonias</a></li>
+                        <li><a id="l18" href="#" onClick="buscar('18',this)">Zapato Apache</a></li>
+                    </ul>
+            
+            </div>
+            <div class="catalogoalbum" id="1">
+            <!--
+            	<div class="catalogopro"><div class="catalogofot"><img src="img/productos/2/catalogo/1.png"/></div><div class="catalogover"></div></div>
+                <div class="catalogopro"><div class="catalogofot"><img src="img/productos/2.png"/></div></div>
+                <div class="catalogopro"><div class="catalogofot"><img src="img/productos/3.png"/></div></div>
+                <div class="catalogopro"><div class="catalogofot"><img src="img/productos/4.png"/></div></div>
+                <div class="catalogopro"><div class="catalogofot"><img src="img/productos/5.png"/></div></div>
+                <div class="catalogopro"><div class="catalogofot"><img src="img/productos/6.png"/></div></div>
+                <div class="catalogopro"><div class="catalogofot"><img src="img/productos/7.png"/></div></div>
+                <div class="catalogopro"><div class="catalogofot"><img src="img/productos/8.png"/></div></div>
+                <div class="catalogopro"><div class="catalogofot"><img src="img/productos/9.png"/></div></div>
+                <div class="catalogopro"><div class="catalogofot"><img src="img/productos/10.png"/></div></div>
+                <div class="catalogopro"><div class="catalogofot"><img src="img/productos/11.png"/></div></div>
+                <div class="catalogopro"><div class="catalogofot"><img src="img/productos/12.png"/></div></div>
+            -->
+            </div>
+        </div>
+        
+        
+        <!-- Contenido -->
+      <div class="h10"></div>
+    <div class="h10"></div>
+
+    <!-- ESPACIO -->
+   <div class="h30"></div>
+        
+         <!-- footer -->
+        <div class="footer">
+        	<div class="div_foter">
+        
+        	<ul id="nav">
+                    <li><a href="index.html">INICIO</a></li>
+                    
+                    <li style="cursor:default">NOSOTROS
+                        <ul>
+                            <li><a href="nosotros.html#mision">Misión</a></li>
+                            <li><a href="nosotros.html#vision">Visión</a></li>
+                            <li><a href="nosotros.html#quien">Quienes Somos</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li style="cursor:default">CATÁLOGO
+                        <ul>
+                            <li><a href="catologo.html?l=1">Cuna Deportivo</a></li>
+                            <li><a href="catologo.html?l=2">Cuna Estampada</a></li>
+                            <li><a href="catologo.html?l=3">Cuna Niña</a></li>
+                            <li><a href="catologo.html?l=4">Deportivo</a></li>
+                            <li><a href="catologo.html?l=5">Mas...</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li><a href="contactenos.html">CONTACTENOS</a></li>
+                </ul>
+        
+        </div>
+        
+            <div class="data_footer" >
+             <p>Kids Estilo Fashion Ltda. | kidsestilo@live.com | Telef. +57 75755583 | Centro Comercial y de Negocios Ventura Plaza - Cúcuta, Norte de Santander, Colombia</p>
+             <p>Todos los derechos reservados | Desarrolladores: tinjaszk@gmail.com - sredny.nevermind92@gmail.com</p>
+            </div>
+        
+        </div>
+    	
+        <div class="h10"></div>
+    
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,120 @@
+.menu, .menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu ul {
+  margin: 0;
+}
+
+.menu > li {
+  position: relative;
+  display: inline-block;
+  outline: 0;
+}
+
+.submenu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 0;
+  overflow: hidden;
+  /* IE8 needs this */
+  overflow: hidden\0/ !important;
+  max-height: 0;
+  /* A .submenu should be only revealed when hovering the .menu */
+  pointer-events: none;
+}
+
+.menu > li:hover .submenu, .menu > li:focus .submenu {
+  pointer-events: auto;
+  z-index: 10;
+  max-height: 2000px;
+  -webkit-transition: none;
+     -moz-transition: none;
+}
+
+/* Default
+ ================================================================= */
+.submenu li {
+  opacity: 0;
+
+  -webkit-transition: opacity .4s, -webkit-transform .6s, max-height .6s;
+     -moz-transition: opacity .4s,    -moz-transform .6s, max-height .6s;
+      -ms-transition: opacity .4s,     -ms-transform .6s, max-height .6s;
+       -o-transition: opacity .4s,      -o-transform .6s, max-height .6s;
+          transition: opacity .4s,         transform .6s, max-height .6s;
+}
+
+.menu > li:hover .submenu li, .menu > li:focus .submenu li {
+  opacity: 1;
+
+  -webkit-transform: none;
+     -moz-transform: none;
+      -ms-transform: none;
+       -o-transform: none;
+          transform: none;
+}
+
+/* Bounce
+ ================================================================= */
+.bounce {
+  overflow: visible;
+}
+
+.bounce li {
+  -webkit-transform: translateX(-40%);
+     -moz-transform: translateX(-40%);
+      -ms-transform: translateX(-40%);
+       -o-transform: translateX(-40%);
+          transform: translateX(-40%);
+
+  -webkit-transition-timing-function: cubic-bezier(0, .35, .5, 1.7);
+     -moz-transition-timing-function: cubic-bezier(0, .35, .5, 1.7);
+      -ms-transition-timing-function: cubic-bezier(0, .35, .5, 1.7);
+       -o-transition-timing-function: cubic-bezier(0, .35, .5, 1.7);
+          transition-timing-function: cubic-bezier(0, .35, .5, 1.7);
+}
+
+/* Fly
+ ================================================================= */
+.fly {
+  -webkit-perspective: 400px;
+     -moz-perspective: 400px;
+      -ms-perspective: 400px;
+       -o-perspective: 400px;
+          perspective: 400px;
+}
+
+.fly li {
+  -webkit-transform-origin: 50% 50% -50px;
+     -moz-transform-origin: 50% 50% -50px;
+      -ms-transform-origin: 50% 50% -50px;
+       -o-transform-origin: 50% 50% -50px;
+          transform-origin: 50% 50% -50px;
+
+  -webkit-transform: rotateX( -180deg );
+     -moz-transform: rotateX( -180deg );
+      -ms-transform: rotateX( -180deg );
+       -o-transform: rotateX( -180deg );
+          transform: rotateX( -180deg );
+}
+
+/* Zipper
+ ================================================================= */
+.zipper li:nth-child(odd) {
+  -webkit-transform: translateX(-100%);
+     -moz-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+       -o-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+.zipper li:nth-child(even) {
+  -webkit-transform: translateX(100%);
+     -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+       -o-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
